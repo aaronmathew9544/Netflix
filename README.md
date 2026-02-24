@@ -1,93 +1,75 @@
-# 🎬 Netflux — Netflix Clone
+# Netflix Clone — React.js Web App
 
-A Netflix-inspired streaming UI built from scratch with **React.js** — no UI libraries, no shortcuts. Every component is hand-coded and heavily commented so beginners can follow along line by line.
+A fully interactive Netflix-style movie browsing application built with **React.js 18** and **Zustand** state management. Created as a placement interview prototype.
 
----
-
-## ✨ Live Demo
-
-> Clone the repo and run `npm start` to see it locally!
+![Netflix Clone](https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=1200&q=80)
 
 ---
 
-## 📸 Preview
+## Live Demo
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  NETFLUX          Home  Movies  TV Shows  My List   [U] │  ← Navbar
-├─────────────────────────────────────────────────────────┤
-│                                                         │
-│  ◉ PREVIEWING                                           │  ← Hero Section
-│  BIG BUCK BUNNY                                         │    (updates on hover)
-│  A large rabbit deals with three bullying creatures.    │
-│                                                         │
-│  [ ▶ PLAY ]  [ ⓘ MORE INFO ]                           │
-│                                                         │
-├─────────────────────────────────────────────────────────┤
-│  TRENDING NOW                                           │
-│                                                         │
-│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐│  ← Movie Grid
-│  │  🐰  │ │  🐘  │ │  🔥  │ │  💜  │ │  🚗  │ │  🏎️  ││    (9 cards)
-│  │      │ │      │ │      │ │      │ │      │ │      ││
-│  └──────┘ └──────┘ └──────┘ └──────┘ └──────┘ └──────┘│
-└─────────────────────────────────────────────────────────┘
-         ↑ Hover a card = background preview plays
-         ↑ Click a card = full-screen video opens
-```
+> Run locally with `npm start` — see setup instructions below.
 
 ---
 
-## 🎮 Features
+## Features
 
-| Interaction | What Happens |
-|-------------|-------------|
-| 🖱️ **Hover** a movie card | Background plays that movie's preview (muted) |
-| 🖱️ **Move away** | Preview stops, background clears |
-| 👆 **Click** a card | Full-screen video player opens, homepage hides |
-| 🖱️ **Move mouse** in player | Transparent ← Back button fades in |
-| ⏸️ **Stop moving** for 3s | Back button fades out automatically |
-| 👆 **Click ← BACK** | Returns to homepage, video stops |
+- 🖱️ **Hover Preview** — Hovering a movie card plays a live video preview in the hero background
+- 🎬 **Click to Play** — Clicking a card opens a full-screen video player
+- ⬅️ **Back Button** — Transparent back button appears on mouse move, returns to browse page
+- 🎮 **Custom Video Player** — Progress bar, play/pause, volume, fullscreen, time display
+- 🔴 **Custom Cursor** — Red dot cursor that expands on interactive elements
+- 📱 **Fully Responsive** — Works on mobile, tablet, and desktop
+- ✨ **Smooth Animations** — Fade/scale transitions between browse and player
+- 🗂️ **9 Mock Movies** — Complete with thumbnails, metadata, and sample video streams
 
 ---
 
-## 🗂️ Project Structure
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| **React.js 18** | Component-based UI framework |
+| **Zustand** | Lightweight global state management |
+| **Custom CSS** | Animations, hover effects, responsive layout |
+| **Bebas Neue + Barlow** | Typography — cinematic display + clean body font |
+| **Google CDN MP4s** | Free sample videos simulating real streaming |
+
+---
+
+## Project Structure
 
 ```
 netflix-clone/
-│
 ├── public/
-│   └── index.html                 ← HTML shell with <div id="root">
-│
+│   └── index.html
 ├── src/
-│   ├── index.js                   ← React entry point
-│   ├── App.js                     ← Root: holds all state, wires components
-│   ├── moviesData.js              ← All 9 movie objects (edit this to add movies!)
-│   │
-│   └── components/
-│       ├── Navbar.js              ← Logo + navigation links
-│       ├── BackgroundPreview.js   ← Fullscreen muted preview video
-│       ├── HeroSection.js         ← Banner showing hovered movie info
-│       ├── MovieGrid.js           ← Responsive CSS Grid of all cards
-│       ├── MovieCard.js           ← Individual card (hover + click logic)
-│       └── FullScreenPlayer.js    ← Full video player with fade-in back button
-│
-├── package.json
-└── README.md
+│   ├── components/
+│   │   ├── Navbar.jsx       # Fixed top navigation bar
+│   │   ├── Hero.jsx         # Hero banner with background video preview
+│   │   ├── MovieCard.jsx    # Movie card with hover + click interactions
+│   │   └── Player.jsx       # Full-screen video player with controls
+│   ├── App.js               # Main app layout + custom cursor
+│   ├── App.css              # All component styles
+│   ├── index.js             # React entry point
+│   ├── index.css            # Global styles + animations
+│   ├── store.js             # Zustand global state store
+│   └── movies.js            # 9 mock movies — metadata + video URLs
+└── package.json
 ```
 
 ---
 
-## 🚀 Getting Started
+## Setup & Installation
 
 ### Prerequisites
 - [Node.js](https://nodejs.org) (LTS version recommended)
-- A terminal / command prompt
 
-### Installation
+### Steps
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/your-username/netflix-clone.git
+git clone https://github.com/YOUR_USERNAME/netflix-clone.git
 cd netflix-clone
 ```
 
@@ -101,139 +83,135 @@ npm install
 npm start
 ```
 
-The app opens automatically at **http://localhost:3000** 🎉
-
----
-
-## 🧠 Concepts Covered
-
-This project is written for beginners. Here's what you'll learn by reading the code:
-
-### `useState` — Tracking what's happening
-```js
-// In App.js — two pieces of state run the whole app
-const [hoveredMovie, setHoveredMovie] = useState(null); // which card is hovered
-const [playingMovie, setPlayingMovie] = useState(null); // which movie was clicked
+**4. Open in browser**
+```
+http://localhost:3000
 ```
 
-### `useRef` — Controlling video elements directly
-```js
-// In BackgroundPreview.js and FullScreenPlayer.js
-const videoRef = useRef(null);
-videoRef.current.play(); // directly calls .play() on the <video> tag
-```
-
-### `useEffect` — Running code when something changes
-```js
-// Runs whenever the hovered movie changes
-useEffect(() => {
-  videoRef.current.load();
-  videoRef.current.play();
-}, [movie]); // ← only re-runs when `movie` changes
-```
-
-### Props — Passing data between components
-```
-App.js
- ├── hoveredMovie ──► BackgroundPreview  (plays preview video)
- ├── hoveredMovie ──► HeroSection        (shows movie title & description)
- └── onClick      ──► MovieCard          (bubbles click back up to App)
-```
-
-### Conditional Rendering — Show different things based on state
-```js
-// In App.js — the whole app switches between two views
-if (playingMovie) {
-  return <FullScreenPlayer movie={playingMovie} onBack={handleBack} />;
-}
-return <HomePage />; // default view
+**5. Build for production**
+```bash
+npm run build
 ```
 
 ---
 
-## 🎥 About the Videos
+## How to Use
 
-All videos are free sample `.mp4` files streamed from Google's public CDN — no downloads or sign-ups needed.
+| Action | Result |
+|---|---|
+| Hover over a movie card | Preview video plays in hero background |
+| Click a movie card | Full-screen player opens, video plays |
+| Move mouse in player | Controls + back button appear |
+| Click back button | Returns to browse page |
+| Resize browser | Responsive layout adapts to screen size |
+
+---
+
+## State Flow (Zustand)
 
 ```
-https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
+User hovers card
+  → setHoveredMovie(movie)
+  → Hero reads state → background video changes
+
+User clicks card
+  → playMovie(movie)
+  → Main page fades out → Player appears → video plays
+
+User clicks back
+  → goBack()
+  → Player fades out → Main page returns
 ```
 
-### Adding Your Own Movies
+---
 
-Open `src/moviesData.js` and edit any movie object:
+## Component Breakdown
 
-```js
+### `store.js` — Zustand State
+```javascript
+const useStore = create((set) => ({
+  hoveredMovie: null,   // tracks which card is hovered
+  playingMovie: null,   // tracks which movie is playing fullscreen
+  setHoveredMovie: (movie) => set({ hoveredMovie: movie }),
+  playMovie: (movie) => set({ playingMovie: movie }),
+  goBack: () => set({ playingMovie: null }),
+}));
+```
+
+### `MovieCard.jsx` — Hover + Click Logic
+- `useRef` for direct video element access
+- `useEffect` watches hover state — plays or pauses preview video
+- 200ms timeout prevents accidental triggers while scrolling
+- CSS `hovered` class triggers scale animation and info panel
+
+### `Hero.jsx` — Background Preview
+- Reads `hoveredMovie` from Zustand
+- `useEffect` switches background video when hovered movie changes
+- Falls back to featured movie when nothing is hovered
+
+### `Player.jsx` — Video Player
+- `onTimeUpdate` fires every 250ms → updates progress bar
+- Click on progress bar calculates position ratio → seeks video
+- Controls auto-hide after 3 seconds of no mouse movement
+- `goBack()` sets `playingMovie = null` → player disappears
+
+---
+
+## Design Highlights
+
+- **Bebas Neue** display font for cinematic Netflix-style titles
+- **Red `#E50914`** accent — consistent with Netflix brand
+- **Custom cursor** — red dot that grows on interactive elements
+- **Scanline overlay** in player for a cinematic CRT aesthetic
+- **Corner accent** — red triangle notch on hovered cards
+- **Staggered entrance animations** on movie cards
+- **Hero gradient** — smooth transition from video to dark background
+
+---
+
+## Video Sources
+
+Using Google's open-source sample MP4 files:
+```
+https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/
+```
+
+These simulate real streaming behaviour (progressive download, buffering, seek support).
+
+> For HLS/m3u8 stream support, replace `<video>` tags with `hls.js` or `video.js`.
+
+---
+
+##  Mobile Support
+
+| Screen Size | Layout |
+|---|---|
+| Desktop (1024px+) | Auto-fill grid, full navbar |
+
+---
+
+## Dependencies
+
+```json
 {
-  id: 1,
-  title: "Your Movie Title",
-  genre: "Action",
-  year: 2024,
-  rating: "PG-13",
-  description: "Your movie description here.",
-  thumbnail: "https://link-to-your-poster-image.jpg",
-  preview:   "https://link-to-preview-video.mp4",  // plays on hover (muted)
-  video:     "https://link-to-full-video.mp4",      // plays on click
-  color:     "#e50914",                             // accent glow color
-},
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "react-scripts": "5.0.1",
+  "zustand": "^4.4.7"
+}
 ```
 
 ---
 
-## 📱 Responsive Design
+## Author
 
-The grid adapts automatically using CSS Grid `auto-fill`:
-
-```css
-grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-```
-
-| Screen Size | Columns |
-|-------------|---------|
-| Desktop 1200px+ | ~6 columns |
-| Tablet 768px | ~4 columns |
-| Mobile 375px | ~2 columns |
+**Aaron**
+- Built for placement interview — React.js Netflix Clone prototype
+- GitHub: [@aaronmathew9544](https://github.com/aaronmathew9544)
 
 ---
 
-## 🛠️ Tech Stack
+## License
 
-| Technology | Usage |
-|------------|-------|
-| [React 18](https://react.dev) | UI framework |
-| Plain CSS (inline styles) | All styling — no libraries |
-| HTML5 `<video>` | Video playback |
-| Google Fonts — Bebas Neue | Display font |
-| CSS Grid | Responsive movie layout |
+This project is open source and available under the [MIT License](LICENSE).
 
-**No Tailwind. No Bootstrap. No MUI. No Redux. Just React + CSS.**
-
----
-
-## 📖 File-by-File Learning Guide
-
-| File | What to learn from it |
-|------|-----------------------|
-| `App.js` | State management, conditional rendering, prop drilling |
-| `MovieCard.js` | Local state, hover effects, CSS transitions |
-| `BackgroundPreview.js` | useRef, useEffect, video control |
-| `FullScreenPlayer.js` | Timers (setTimeout), mouse events, z-index layering |
-| `HeroSection.js` | Conditional JSX, responsive font sizes with `clamp()` |
-| `MovieGrid.js` | CSS Grid, rendering lists with `.map()` |
-| `moviesData.js` | Data modeling, JavaScript arrays and objects |
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! If you're a beginner and something in the code confused you, open an issue — that feedback helps make the comments better for everyone.
-
----
-
-## 📄 License
-
-MIT — free to use, modify, and share.
-
----
-
-> Built as an interview task to demonstrate React fundamentals without relying on component libraries.
