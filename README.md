@@ -14,14 +14,14 @@ A fully interactive Netflix-style movie browsing application built with **React.
 
 ## Features
 
-- 🖱️ **Hover Preview** — Hovering a movie card plays a live video preview in the hero background
-- 🎬 **Click to Play** — Clicking a card opens a full-screen video player
-- ⬅️ **Back Button** — Transparent back button appears on mouse move, returns to browse page
-- 🎮 **Custom Video Player** — Progress bar, play/pause, volume, fullscreen, time display
-- 🔴 **Custom Cursor** — Red dot cursor that expands on interactive elements
-- 📱 **Fully Responsive** — Works on mobile, tablet, and desktop
-- ✨ **Smooth Animations** — Fade/scale transitions between browse and player
-- 🗂️ **9 Mock Movies** — Complete with thumbnails, metadata, and sample video streams
+-  **Hover Preview** — Hovering a movie card plays a live video preview in the hero background
+-  **Click to Play** — Clicking a card opens a full-screen video player
+-  **Back Button** — Transparent back button appears on mouse move, returns to browse page
+-  **Custom Video Player** — Progress bar, play/pause, volume, fullscreen, time display
+-  **Custom Cursor** — Red dot cursor that expands on interactive elements
+-  **Fully Responsive** — Works on mobile, tablet, and desktop
+-  **Smooth Animations** — Fade/scale transitions between browse and player
+-  **9 Mock Movies** — Complete with thumbnails, metadata, and sample video streams
 
 ---
 
